@@ -35,10 +35,12 @@ module ActionController
 
         expected = {
           data: {
-            name: 'Name 1',
-            description: 'Description 1',
             id: '1',
-            type: 'profiles'
+            type: 'profiles',
+            attributes: {
+              name: 'Name 1',
+              description: 'Description 1'
+            }
           },
           meta: {
             foo: 'bar'
@@ -53,10 +55,12 @@ module ActionController
 
         expected = {
           data: {
-            name: 'Name 1',
-            description: 'Description 1',
             id: '1',
-            type: 'profiles'
+            type: 'profiles',
+            attributes: {
+              name: 'Name 1',
+              description: 'Description 1'
+            }
           },
           meta: {
             baz: 'bam'
