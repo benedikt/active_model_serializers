@@ -38,6 +38,9 @@ module ActionController
         @_adapter_opts, @_serializer_opts =
           options.partition { |k, _| ADAPTER_OPTION_KEYS.include? k }.map { |h| Hash[h] }
 
+        @_adapter_opts.reverse_merge!(default_adapter_options)
+        @_serializer_opts.reverse_merge!(default_serializer_options)
+
         if use_adapter? && (serializer = get_serializer(resource))
 
           @_serializer_opts[:scope] ||= serialization_scope
@@ -59,6 +62,14 @@ module ActionController
       @_adapter_opts = nil
 
       super(exception)
+    end
+
+    def default_adapter_options
+      {}
+    end
+
+    def default_serializer_options
+      {}
     end
 
     module ClassMethods
